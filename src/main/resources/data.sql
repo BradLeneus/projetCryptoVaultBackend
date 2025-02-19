@@ -1,8 +1,8 @@
-insert into crypto (name, price) values ( 'Demimbu', 21);
-insert into crypto (name, price) values ('Eabox', 22);
-insert into crypto (name, price) values  ('Skiba', 3);
-insert into crypto (name, price) values ('Lajo', 4);
-insert into crypto (name, price) values ( 'Feedbug', 5);
+insert into crypto (name, price, ticker) values ( 'Bitcoin', 21, 'Btc');
+insert into crypto (name, price, ticker) values ('Etherum', 22, 'Eth');
+insert into crypto (name, price, ticker)values  ('BittensorTao', 3, 'Tao');
+insert into crypto (name, price, ticker) values ('Solana', 4, 'Sol');
+insert into crypto (name, price, ticker) values ( 'ShibaInu', 5, 'Shiba');
 
 insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");
 insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");

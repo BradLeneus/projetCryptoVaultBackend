@@ -29,4 +29,17 @@ public class CustomerController {
     public List<Customer> getall(){
         return repository.findAll();
     }
+
+    @GetMapping("/getCustomer/{name}/{lname}")
+    public Customer getCustomer(@PathVariable String name, @PathVariable String lname){
+        List<Customer> arr = repository.findAll();
+        for (Customer c : arr){
+            if (c.getFname().equals("brad") && c.getLname().equals(lname)){
+                return c;
+            }
+
+
+        }
+        return null;
+    }
 }

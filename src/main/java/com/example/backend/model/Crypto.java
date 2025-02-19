@@ -12,6 +12,7 @@ public class Crypto {
     private int id;
     private String name;
     private double price;
+    private String ticker;
 
     public String getName() {
         return name;
@@ -35,5 +36,13 @@ public class Crypto {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTicker() {
+        return ticker;
+    }
+
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 }
