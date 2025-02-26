@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 // par default le rest se met en mode "private"
 // elle ne permet pas de call il faut donc autorisé
 // @CrossOrigin ouvre la porte a n'importe qui de call les methodes
-@CrossOrigin()
+@CrossOrigin
 @RequestMapping("/samuel")
 public class CustomerController {
 
@@ -20,7 +21,7 @@ public class CustomerController {
     // post mapping parce que avec axios on fait un post
     @PostMapping("/newCustomer")
     // le @RequestBody regle le bug des données
-    public Customer createCust(@RequestBody Customer customer){
+    public Customer createCustomer(@RequestBody Customer customer){
         repository.save(customer);
         return customer;
     }
@@ -34,12 +35,18 @@ public class CustomerController {
     public Customer getCustomer(@PathVariable String name, @PathVariable String lname){
         List<Customer> arr = repository.findAll();
         for (Customer c : arr){
-            if (c.getFname().equals("brad") && c.getLname().equals(lname)){
+            if (c.getFname().equals(name) && c.getLname().equals(lname)){
                 return c;
             }
 
 
         }
         return null;
+    }
+    @GetMapping("/customer/{id}")
+    public Optional<Customer> getCustomerById(@PathVariable Long id) {
+        return repository.findById(id);
+
+
     }
 }
