@@ -4,7 +4,7 @@ insert into crypto (name, price, ticker)values  ('BittensorTao', 3, 'Tao');
 insert into crypto (name, price, ticker) values ('Solana', 4, 'Sol');
 insert into crypto (name, price, ticker) values ( 'ShibaInu', 5, 'Shiba');
 
-insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");
+insert into Customer (email , fname, lname) values("aa", "sam", "brad");
 insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");
 insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");
 insert into Customer (email , fname, lname) values("adad", "dasdads", "asdasd");

@@ -23,6 +23,7 @@ public class CustomerController {
     // le @RequestBody regle le bug des données
     public Customer createCustomer(@RequestBody Customer customer){
         repository.save(customer);
+
         return customer;
     }
 
@@ -44,7 +45,7 @@ public class CustomerController {
         return null;
     }
     @GetMapping("/customer/{id}")
-    public Optional<Customer> getCustomerById(@PathVariable Long id) {
+    public Optional<Customer> getCustomerById(@PathVariable int id) {
         return repository.findById(id);
 
 

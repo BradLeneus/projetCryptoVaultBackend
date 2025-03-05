@@ -9,5 +9,7 @@ import java.util.List;
 public interface WalletRepository extends JpaRepository<Wallet, Integer> {
 
     public List<Wallet> findAllByCustomer_Id(int id);
+
+
 }
 
