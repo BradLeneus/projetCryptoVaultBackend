@@ -20,6 +20,10 @@ public class CryptoController {
 
     @GetMapping("getall")
     public List<Crypto> getAllCrypto(){
-        return cryptoRepository.findAll();
+        List<Crypto> cryptoList = cryptoRepository.findAll();
+        for(Crypto c :cryptoList ){
+            c.setPrice((int)(Math.random() * 1000));
+        }
+        return cryptoList;
     }
 }

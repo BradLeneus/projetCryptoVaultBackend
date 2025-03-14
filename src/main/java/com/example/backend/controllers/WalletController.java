@@ -44,7 +44,6 @@ public class WalletController {
                 }
                 if(isThere){
                     isThere = false;
-
                 }
                 else {
 
