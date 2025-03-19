@@ -3,6 +3,7 @@ package com.example.backend.Service;
 import com.example.backend.model.Customer;
 import com.example.backend.model.CustomerNoPwd;
 import com.example.backend.repositories.CustomerRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class CustomerService {
         return customerNoPwdList;
     }
     public boolean createCustomer(Customer customer){
+
         customerRepository.save(customer);
         return true;
     }

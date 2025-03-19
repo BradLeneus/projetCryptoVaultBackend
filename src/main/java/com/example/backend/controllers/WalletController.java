@@ -1,5 +1,6 @@
 package com.example.backend.controllers;
 
+import com.example.backend.Service.WalletService;
 import com.example.backend.model.Crypto;
 import com.example.backend.model.Customer;
 import com.example.backend.model.Wallet;
@@ -19,46 +20,19 @@ public class WalletController {
     @Autowired
     WalletRepository walletRepository;
 
+
+    @Autowired
+    WalletService walletService;
     @GetMapping("/getall")
     public List<Wallet> getAll(){
+    return walletService.getAll();
 
-        return walletRepository.findAll();
 
     }
 
     @GetMapping("/getbyuser/{id}")
     public List<Wallet> getByIdUser(@PathVariable int id){
-        List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
-        List<Wallet> listFilter = new ArrayList<>();
-        for(Wallet w : listWallet){
-
-
-                boolean isThere = false;
-                for(Wallet wfilt : listFilter){
-                    if(wfilt.getIdcrypto().getId() == w.getIdcrypto().getId()) {
-                        wfilt.setQty(wfilt.getQty() + w.getQty());
-
-                        isThere = true;
-                    }
-
-                }
-                if(isThere){
-                    isThere = false;
-                }
-                else {
-
-                        listFilter.add(w);
-
-
-                }
-
-            }
-        for(Wallet w : listFilter){
-            if(w.getQty() == 0){
-                System.out.println(w.getQty());
-            }
-        }
-      return listFilter;
+        return walletService.getByUserId(id);
     }
 
     @PostMapping("/newWallet")
