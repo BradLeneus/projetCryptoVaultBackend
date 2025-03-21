@@ -8,7 +8,7 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int qty;
+    private double qty;
     @ManyToOne
     private Customer customer;
     @ManyToOne
@@ -22,11 +22,11 @@ public class Wallet {
         this.id = id;
     }
 
-    public int getQty() {
+    public double getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(double qty) {
         this.qty = qty;
     }
 

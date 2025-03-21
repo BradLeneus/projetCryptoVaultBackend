@@ -1,8 +1,10 @@
 package com.example.backend.controllers;
 
 import com.example.backend.Service.CustomerService;
+import com.example.backend.Service.WalletService;
 import com.example.backend.model.Customer;
 import com.example.backend.model.CustomerNoPwd;
+import com.example.backend.model.Wallet;
 import com.example.backend.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,8 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
+    @Autowired
+    WalletService walletService;
     // post mapping parce que avec axios on fait un post
     @PostMapping("/newCustomer")
     // le @RequestBody regle le bug des données
@@ -49,7 +53,8 @@ public class CustomerController {
     //marche pas
     @DeleteMapping("/deleteCustomer/{id}")
     public boolean deleteCustomerById(@PathVariable int id){
-        repository.deleteById(id);
+        walletService.deleteWalletUserBYId(id);
+        customerService.deleteCustomerById(id);
         return true;
     }
 }

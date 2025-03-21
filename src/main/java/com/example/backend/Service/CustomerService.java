@@ -62,4 +62,8 @@ public class CustomerService {
         customerNoPwd.setFname(c.get().getFname());
         return customerNoPwd;
     }
+    public boolean deleteCustomerById(int id){
+        customerRepository.deleteById(id);
+        return true;
+    }
 }

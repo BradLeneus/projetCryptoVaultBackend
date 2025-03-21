@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import javax.swing.*;
+import java.sql.Blob;
+
 @Entity
 public class Crypto {
     @Id
@@ -13,6 +16,9 @@ public class Crypto {
     private String name;
     private double price;
     private String ticker;
+
+
+
 
     public String getName() {
         return name;

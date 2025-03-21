@@ -30,30 +30,40 @@ public class WalletService {
         List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
         List<Wallet> listFilter = new ArrayList<>();
         for(Wallet w : listWallet){
-            boolean isThere = false;
+            boolean isInDouble = false;
             for(Wallet wfilt : listFilter){
                 if(wfilt.getIdcrypto().getId() == w.getIdcrypto().getId()) {
                     wfilt.setQty(wfilt.getQty() + w.getQty());
 
-                    isThere = true;
+                    isInDouble = true;
                 }
 
             }
-            if(isThere){
-                isThere = false;
-            }
-            else {
-
+            if(!isInDouble){
                 listFilter.add(w);
 
             }
+
         }
         for(Wallet w : listFilter){
             if(w.getQty() == 0){
+                System.out.println(w.toString());
                 listFilter.remove(w);
             }
         }
         return listFilter;
+    }
+    public boolean createWallet(Wallet wallet){
+        walletRepository.save(wallet);
+        return true;
+    }
+    public boolean deleteWalletUserBYId(int id){
+        List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
+        for(Wallet w : listWallet){
+            walletRepository.delete(w);
+        }
+
+        return true;
     }
 
 }
