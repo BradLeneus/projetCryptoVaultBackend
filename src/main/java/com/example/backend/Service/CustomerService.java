@@ -4,15 +4,18 @@ import com.example.backend.model.Customer;
 import com.example.backend.model.CustomerNoPwd;
 import com.example.backend.repositories.CustomerRepository;
 
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.Signature;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CustomerService {
-
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     private final CustomerRepository customerRepository;
 
     public CustomerService(CustomerRepository customerRepository){
@@ -33,16 +36,22 @@ public class CustomerService {
         return customerNoPwdList;
     }
     public boolean createCustomer(Customer customer){
+        if(customerRepository.findCustomersByFname(customer.getFname()) == null){
+            customer.setLname(passwordEncoder.encode(customer.getLname()));
+            customerRepository.save(customer);
+            return true;
+        }
+        else {
+            return false;
+        }
 
-        customerRepository.save(customer);
-        return true;
     }
 
     public CustomerNoPwd findCustomerByNameAndPassword(String name, String lname){
-        List<Customer> arr = customerRepository.findAll();
+        Customer c = customerRepository.findCustomersByFname(name);
 
-        for (Customer c : arr){
-            if (c.getFname().equals(name) && c.getLname().equals(lname)){
+
+            if (passwordEncoder.matches(lname, c.getLname())){
                 CustomerNoPwd customerNoPwd = new CustomerNoPwd();
                 customerNoPwd.setId(c.getId());
                 customerNoPwd.setFname(c.getFname());
@@ -51,7 +60,7 @@ public class CustomerService {
             }
 
 
-        }
+
         return null;
     }
     public CustomerNoPwd findCustomerById(int id){
@@ -65,5 +74,14 @@ public class CustomerService {
     public boolean deleteCustomerById(int id){
         customerRepository.deleteById(id);
         return true;
+    }
+    public boolean GetNameByCustomerName(String name){
+        List<Customer> listCustomer = customerRepository.findAll();
+        for(Customer c : listCustomer){
+            if(c.getFname().equals(name)){
+                return true;
+            }
+        }
+        return false;
     }
 }

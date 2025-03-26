@@ -22,7 +22,7 @@ import java.util.Optional;
 public class CustomerController {
 
 
-    CustomerRepository repository;
+
 
     @Autowired
     CustomerService customerService;
@@ -38,6 +38,10 @@ public class CustomerController {
     @GetMapping("/getAll")
     public List<CustomerNoPwd> getall(){
        return customerService.getallCustomer();
+    }
+    @GetMapping("/getByName/{name}")
+    public boolean getCustomerByName(@PathVariable String name){
+        return customerService.GetNameByCustomerName(name);
     }
 
     @GetMapping("/getCustomer/{name}/{lname}")

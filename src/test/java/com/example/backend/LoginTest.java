@@ -17,7 +17,7 @@ public class LoginTest {
 
     public void setUp(){
         System.setProperty("webdriver.gecko.driver", "./data/geckodriver.exe");
-        
+
 
 
     }

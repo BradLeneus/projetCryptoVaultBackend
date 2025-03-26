@@ -6,8 +6,12 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
+
 @RepositoryRestResource(collectionResourceRel = "customer", path = "oui")
 @CrossOrigin()
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+
+    public Customer findCustomersByFname(String fname);
 
 }
