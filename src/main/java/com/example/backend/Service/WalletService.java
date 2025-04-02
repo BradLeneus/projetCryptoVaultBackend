@@ -46,15 +46,22 @@ public class WalletService {
 
         }
         for(Wallet w : listFilter){
-            if(w.getQty() == 0){
-                System.out.println(w.toString());
-                listFilter.remove(w);
+            if(w.getQty() < 0){
+                w.setQty(0);
+
             }
         }
         return listFilter;
     }
     public boolean createWallet(Wallet wallet){
+        Wallet temp = walletRepository.findWalletByCustomer_IdAndIdcrypto_Id(wallet.getCustomer().getId(), wallet.getIdcrypto().getId());
+        if(temp != null){
+            temp.setQty(wallet.getQty());
+            walletRepository.save(temp);
+        }else{
+
         walletRepository.save(wallet);
+        }
         return true;
     }
     public boolean deleteWalletUserBYId(int id){

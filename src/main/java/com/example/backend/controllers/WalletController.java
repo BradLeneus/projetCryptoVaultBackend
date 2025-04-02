@@ -38,10 +38,13 @@ public class WalletController {
     @PostMapping("/newWallet")
     // le @RequestBody regle le bug des données
     public Wallet createWallet(@RequestBody Wallet wallet){
+
+
         walletService.createWallet(wallet);
 
         return wallet;
     }
+
 }
 
 

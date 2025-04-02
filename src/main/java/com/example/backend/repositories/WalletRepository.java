@@ -10,6 +10,9 @@ public interface WalletRepository extends JpaRepository<Wallet, Integer> {
 
     public List<Wallet> findAllByCustomer_Id(int id);
 
+    public Wallet findWalletByCustomer_IdAndIdcrypto_Id(int idC, int idCr);
+
+
 
 }
 
