@@ -1,6 +1,7 @@
 package com.example.backend.controllers;
 
 
+import com.example.backend.Service.CryptoService;
 import com.example.backend.model.Crypto;
 import com.example.backend.repositories.CryptoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +15,11 @@ import java.util.List;
 @RequestMapping("crypto")
 @CrossOrigin
 public class CryptoController {
-
     @Autowired
-    CryptoRepository cryptoRepository;
+    CryptoService cryptoService;
 
     @GetMapping("getall")
     public List<Crypto> getAllCrypto(){
-        List<Crypto> cryptoList = cryptoRepository.findAll();
-        for(Crypto c :cryptoList ){
-            c.setPrice((int)(Math.random() * (c.getPrice()) * 0.1) + c.getPrice());
-        }
-        return cryptoList;
+        return cryptoService.getAllCrypto();
     }
 }
