@@ -18,7 +18,7 @@ import java.util.Optional;
 // elle ne permet pas de call il faut donc autorisé
 // @CrossOrigin ouvre la porte a n'importe qui de call les methodes
 @CrossOrigin
-@RequestMapping("/samuel")
+@RequestMapping("/Customer")
 public class CustomerController {
 
 
@@ -55,7 +55,7 @@ public class CustomerController {
 
     }
 
-    //marche pas
+
     @DeleteMapping("/deleteCustomer/{id}")
     public boolean deleteCustomerById(@PathVariable int id){
         walletService.deleteWalletUserBYId(id);

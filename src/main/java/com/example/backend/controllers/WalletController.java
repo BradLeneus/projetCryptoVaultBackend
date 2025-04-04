@@ -17,8 +17,7 @@ import java.util.Optional;
 @CrossOrigin
 public class WalletController {
 
-    @Autowired
-    WalletRepository walletRepository;
+
 
 
     @Autowired

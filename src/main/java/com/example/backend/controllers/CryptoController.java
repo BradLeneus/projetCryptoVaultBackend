@@ -22,7 +22,7 @@ public class CryptoController {
     public List<Crypto> getAllCrypto(){
         List<Crypto> cryptoList = cryptoRepository.findAll();
         for(Crypto c :cryptoList ){
-            c.setPrice((int)(Math.random() * 1000));
+            c.setPrice((int)(Math.random() * (c.getPrice()) * 0.1) + c.getPrice());
         }
         return cryptoList;
     }

@@ -1,8 +1,8 @@
-insert into crypto (name, price, ticker) values ( 'Bitcoin', 21, 'Btc');
-insert into crypto (name, price, ticker) values ('Etherum', 22, 'Eth');
-insert into crypto (name, price, ticker)values  ('BittensorTao', 3, 'Tao');
-insert into crypto (name, price, ticker) values ('Solana', 4, 'Sol');
-insert into crypto (name, price, ticker) values ( 'ShibaInu', 5, 'Shiba');
+insert into crypto (name, price, ticker) values ( 'Bitcoin', 80000, 'Btc');
+insert into crypto (name, price, ticker) values ('Etherum', 4000, 'Eth');
+insert into crypto (name, price, ticker)values  ('BittensorTao', 250, 'Tao');
+insert into crypto (name, price, ticker) values ('Solana', 180, 'Sol');
+insert into crypto (name, price, ticker) values ( 'ShibaInu', 0.001, 'Shiba');
 
 insert into Customer (email , fname, lname) values("aa@gmail.com", "sam", "$2a$10$DqJ961drU95HOyHBWsJFSeEWl5sdZSi41ojbyH9leFY3RNtpCKbJu");
 insert into Customer (email , fname, lname) values("adad@gmail.com", "sas", "$2a$10$9obbP9ZtY.w9mEO/74CAreBk0uMPzvMLvR0cPTLVIXdSjGToXRR4q");
