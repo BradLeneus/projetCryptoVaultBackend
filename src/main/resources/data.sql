@@ -1,6 +1,6 @@
 insert into crypto (name, price, ticker) values ( 'Bitcoin', 80000, 'Btc');
 insert into crypto (name, price, ticker) values ('Etherum', 4000, 'Eth');
-insert into crypto (name, price, ticker)values  ('BittensorTao', 250, 'Tao');
+insert into crypto (name, price, ticker)values  ('BittensorTao', 10000, 'Tao');
 insert into crypto (name, price, ticker) values ('Solana', 180, 'Sol');
 insert into crypto (name, price, ticker) values ( 'ShibaInu', 0.001, 'Shiba');
 

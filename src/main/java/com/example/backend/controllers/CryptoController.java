@@ -5,10 +5,7 @@ import com.example.backend.Service.CryptoService;
 import com.example.backend.model.Crypto;
 import com.example.backend.repositories.CryptoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -21,5 +18,16 @@ public class CryptoController {
     @GetMapping("getall")
     public List<Crypto> getAllCrypto(){
         return cryptoService.getAllCrypto();
+    }
+
+
+    @GetMapping("getAllByPrice/{asc}")
+    public List<Crypto> getAllCryptoByPrice(@PathVariable boolean asc){
+        return cryptoService.getAllCryptoByPrice(asc);
+    }
+
+    @GetMapping("getAllByName/{asc}")
+    public List<Crypto> getAllCryptoByName(@PathVariable boolean asc){
+        return cryptoService.getAllCryptoByName(asc);
     }
 }
