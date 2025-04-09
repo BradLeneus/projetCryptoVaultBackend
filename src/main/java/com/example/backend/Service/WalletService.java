@@ -20,13 +20,16 @@ public class WalletService {
     public List<Wallet> getAll(){
 
         List<Wallet> listTempo = walletRepository.findAll();
-        for (Wallet w : listTempo){
-            w.getCustomer().setLname(null);
+        if(listTempo != null){
+            for (Wallet w : listTempo){
+                w.getCustomer().setLname(null);
 
+            }
+            return listTempo;
         }
-        return listTempo;
+        return null;
     }
-    public List<Wallet> getByUserId(int id){
+    public List<Wallet> getByUserIdFilter(int id){
         List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
         List<Wallet> listFilter = new ArrayList<>();
         for(Wallet w : listWallet){
@@ -52,6 +55,10 @@ public class WalletService {
             }
         }
         return listFilter;
+    }
+    public List<Wallet> getByUserId(int id){
+        List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
+        return listWallet;
     }
     public boolean createWallet(Wallet wallet){
         Wallet temp = walletRepository.findWalletByCustomer_IdAndIdcrypto_Id(wallet.getCustomer().getId(), wallet.getIdcrypto().getId());
