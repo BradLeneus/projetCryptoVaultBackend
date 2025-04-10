@@ -5,6 +5,8 @@ import com.example.backend.model.Wallet;
 import com.example.backend.repositories.WalletRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +65,9 @@ public class WalletService {
     public boolean createWallet(Wallet wallet){
         Wallet temp = walletRepository.findWalletByCustomer_IdAndIdcrypto_Id(wallet.getCustomer().getId(), wallet.getIdcrypto().getId());
         if(temp != null){
-            temp.setQty(wallet.getQty());
+            DecimalFormat df = new DecimalFormat("#.####");
+            df.setRoundingMode(RoundingMode.CEILING);
+            temp.setQty(Double.parseDouble((df.format(wallet.getQty()))));
             walletRepository.save(temp);
         }else{
 

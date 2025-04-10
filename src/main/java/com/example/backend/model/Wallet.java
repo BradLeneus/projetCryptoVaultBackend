@@ -8,6 +8,8 @@ public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+
     private double qty;
     @ManyToOne
     private Customer customer;
