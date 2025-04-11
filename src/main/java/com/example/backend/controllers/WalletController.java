@@ -22,6 +22,8 @@ public class WalletController {
 
     @Autowired
     WalletService walletService;
+
+    // not used for now
     @GetMapping("/getall")
     public List<Wallet> getAll(){
     return walletService.getAll();

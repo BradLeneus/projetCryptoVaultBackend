@@ -19,8 +19,8 @@ public class WalletService {
         this.walletRepository = walletRepository;
     }
 
-    public List<Wallet> getAll(){
 
+    public List<Wallet> getAll(){
         List<Wallet> listTempo = walletRepository.findAll();
         if(listTempo != null){
             for (Wallet w : listTempo){
@@ -31,7 +31,7 @@ public class WalletService {
         }
         return null;
     }
-    public List<Wallet> getByUserIdFilter(int id){
+    /*public List<Wallet> getByUserIdFilter(int id){
         List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
         List<Wallet> listFilter = new ArrayList<>();
         for(Wallet w : listWallet){
@@ -57,7 +57,7 @@ public class WalletService {
             }
         }
         return listFilter;
-    }
+    } */
     public List<Wallet> getByUserId(int id){
         List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
         return listWallet;
@@ -65,9 +65,10 @@ public class WalletService {
     public boolean createWallet(Wallet wallet){
         Wallet temp = walletRepository.findWalletByCustomer_IdAndIdcrypto_Id(wallet.getCustomer().getId(), wallet.getIdcrypto().getId());
         if(temp != null){
-            DecimalFormat df = new DecimalFormat("#.####");
-            df.setRoundingMode(RoundingMode.CEILING);
-            temp.setQty(Double.parseDouble((df.format(wallet.getQty()))));
+
+
+            double tempo = Math.round(wallet.getQty()*10000.0)/10000.0;
+            temp.setQty(tempo);
             walletRepository.save(temp);
         }else{
 
