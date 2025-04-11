@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CryptoRepository extends JpaRepository<Crypto, Integer> {
 
-    public List<Crypto> findAllByOrderByPriceDesc();
+    List<Crypto> findAllByOrderByPriceDesc();
 }

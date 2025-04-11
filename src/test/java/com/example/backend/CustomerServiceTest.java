@@ -41,7 +41,7 @@ public class CustomerServiceTest {
         //Arrange : préparer les données de test
         Customer c = new Customer();
         c.setEmail("1");
-        List<Customer> list = Arrays.asList(c);
+        List<Customer> list = List.of(c);
 
         //return une liste données au lieu de faire une requette sql dans une bd
         when(customerRepository.findAll()).thenReturn(list);

@@ -12,6 +12,6 @@ import java.util.List;
 @CrossOrigin()
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    public Customer findCustomersByFname(String fname);
+    Customer findCustomersByFname(String fname);
 
 }

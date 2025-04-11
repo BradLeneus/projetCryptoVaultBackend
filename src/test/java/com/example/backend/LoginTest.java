@@ -10,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTest {
-    private WebDriver driver = new FirefoxDriver();
+    private final WebDriver driver = new FirefoxDriver();
 
 
     @BeforeEach
