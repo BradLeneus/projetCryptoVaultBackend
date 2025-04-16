@@ -75,13 +75,12 @@ public class CustomerService {
         customerRepository.deleteById(id);
         return true;
     }
-    public boolean GetNameByCustomerName(String name){
-        List<Customer> listCustomer = customerRepository.findAll();
-        for(Customer c : listCustomer){
-            if(c.getFname().equals(name)){
-                return true;
-            }
+    public boolean isUserExistByCustomerName(String name){
+        Customer customer = customerRepository.findCustomersByFname(name);
+        if(customer != null){
+            return true;
         }
+
         return false;
     }
 }

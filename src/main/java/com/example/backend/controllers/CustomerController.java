@@ -40,8 +40,8 @@ public class CustomerController {
        return customerService.getallCustomer();
     }
     @GetMapping("/getByName/{name}")
-    public boolean getCustomerByName(@PathVariable String name){
-        return customerService.GetNameByCustomerName(name);
+    public boolean isUsernameExist(@PathVariable String name){
+        return customerService.isUserExistByCustomerName(name);
     }
 
     @GetMapping("/getCustomer/{name}/{lname}")
