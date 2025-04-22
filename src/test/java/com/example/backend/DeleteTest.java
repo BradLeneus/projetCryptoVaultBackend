@@ -7,9 +7,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.awt.*;
+import java.util.List;
 
-public class LoginTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class DeleteTest {
     private final WebDriver driver = new FirefoxDriver();
 
 
@@ -23,25 +27,21 @@ public class LoginTest {
     }
 
     @Test
-    public void testSignUpAndFromLoginToWallet(){
-        driver.get("http://localhost/SignUp");
-        String usernameToSend = "totqw";
-        String passwordToSend = "tata";
-        WebElement username = driver.findElement(By.id("firstname"));
-        WebElement password = driver.findElement(By.id("lastname"));
-        WebElement email = driver.findElement(By.id("email"));
-        WebElement signUpBtn = driver.findElement(By.id("btnSignUp"));
+    public void delete(){
+        testLoginForm("boss", "123");
+        driver.get("http://localhost/customersList");
 
-        username.sendKeys(usernameToSend);
-        password.sendKeys(passwordToSend);
-        email.sendKeys("sasd@gmail.nz");
-        signUpBtn.click();
+        List<WebElement> deleteButton =  driver.findElements(By.className("btnDelete"));
+        int numBfr = deleteButton.size();
+        deleteButton.get(0).click();
 
-        String SignUpOk = "http://localhost/Login";
-        assertEquals(SignUpOk, driver.getCurrentUrl());
-        testLoginForm(usernameToSend, passwordToSend);
+        deleteButton =  driver.findElements(By.className("btnDelete"));
+        int numAfter = deleteButton.size();
+
+        assertTrue(numBfr > numAfter);
+
+
     }
-
     public void testLoginForm(String usernameParent, String passwordParent){
         driver.get("http://localhost/login");
 
@@ -53,7 +53,9 @@ public class LoginTest {
         password.sendKeys(passwordParent);
         loginButton.click();
 
-        String loginOk = "http://localhost/Wallet";
+        String loginOk = "http://localhost/customersList";
         assertEquals(loginOk, driver.getCurrentUrl());
     }
+
+
 }
