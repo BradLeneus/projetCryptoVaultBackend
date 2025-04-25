@@ -65,9 +65,5 @@ public class InteractWalletTest {
 
     }
 
-    public void testLoginForm(){
 
-
-
-    }
 }
