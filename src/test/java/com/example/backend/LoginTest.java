@@ -1,5 +1,6 @@
 package com.example.backend;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -39,21 +40,22 @@ public class LoginTest {
 
         String SignUpOk = "http://localhost/Login";
         assertEquals(SignUpOk, driver.getCurrentUrl());
-        testLoginForm(usernameToSend, passwordToSend);
+        testLoginForm();
     }
 
-    public void testLoginForm(String usernameParent, String passwordParent){
+    public void testLoginForm() {
         driver.get("http://localhost/login");
 
         WebElement username = driver.findElement(By.id("firstname"));
         WebElement password = driver.findElement(By.id("password"));
         WebElement loginButton = driver.findElement(By.id("btnLogin"));
 
-        username.sendKeys(usernameParent);
-        password.sendKeys(passwordParent);
+        username.sendKeys("totqw");
+        password.sendKeys("tata");
         loginButton.click();
 
         String loginOk = "http://localhost/Wallet";
-        assertEquals(loginOk, driver.getCurrentUrl());
+        String current = driver.getCurrentUrl();
+        assertEquals(loginOk, current);
     }
 }

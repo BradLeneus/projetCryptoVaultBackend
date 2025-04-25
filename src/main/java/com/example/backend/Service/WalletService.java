@@ -61,6 +61,9 @@ public class WalletService {
     public List<Wallet> getByUserId(int id){
         List<Wallet> listTempo = walletRepository.findAllByCustomer_Id(id);
         if(listTempo != null){
+            for (Wallet w : listTempo){
+                w.getCustomer().setLname(null);
+            }
             return  listTempo;
         }
         else {
