@@ -8,7 +8,8 @@ import jakarta.persistence.Id;
 import org.checkerframework.common.aliasing.qual.Unique;
 
 @Entity
-public class Customer {
+public class
+Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

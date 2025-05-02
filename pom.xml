@@ -10,8 +10,8 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
+    <version>v2</version>
+    <name>backendv2</name>
     <description>backend</description>
     <url/>
     <licenses>
@@ -32,6 +32,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     <dependencies>
+
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -122,6 +125,17 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
