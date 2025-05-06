@@ -23,6 +23,7 @@ public class CryptoService {
     public List<Crypto> getAllCrypto(){
         cryptoList = cryptoRepository.findAll();
         for(Crypto c :cryptoList ){
+            //semi random price varie de 10%
             c.setPrice((int)(Math.random() * (c.getPrice()) * 0.1) + c.getPrice());
         }
         return cryptoList;

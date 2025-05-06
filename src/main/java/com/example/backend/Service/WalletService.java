@@ -31,33 +31,7 @@ public class WalletService {
         }
         return null;
     }
-    /*public List<Wallet> getByUserIdFilter(int id){
-        List<Wallet> listWallet = walletRepository.findAllByCustomer_Id(id);
-        List<Wallet> listFilter = new ArrayList<>();
-        for(Wallet w : listWallet){
-            boolean isInDouble = false;
-            for(Wallet wfilt : listFilter){
-                if(wfilt.getIdcrypto().getId() == w.getIdcrypto().getId()) {
-                    wfilt.setQty(wfilt.getQty() + w.getQty());
 
-                    isInDouble = true;
-                }
-
-            }
-            if(!isInDouble){
-                listFilter.add(w);
-
-            }
-
-        }
-        for(Wallet w : listFilter){
-            if(w.getQty() < 0){
-                w.setQty(0);
-
-            }
-        }
-        return listFilter;
-    } */
     public List<Wallet> getByUserId(int id){
         List<Wallet> listTempo = walletRepository.findAllByCustomer_Id(id);
         if(listTempo != null){
@@ -71,6 +45,8 @@ public class WalletService {
         }
 
     }
+
+    // pas utilisé, un peu un bug mais c'etais drole
     public List<Wallet> getByUserIdFunny(int id){
         List<Wallet> listTempo = walletRepository.findAllByCustomer_Id(id);
         if(walletList == null){
@@ -79,7 +55,6 @@ public class WalletService {
         }
         else {
             for(Wallet w : listTempo){
-
                 if(walletList.contains(w)){
                     walletList.get( walletList.indexOf(w)).getIdcrypto().setPrice(555.55);
                 }
@@ -89,18 +64,17 @@ public class WalletService {
             }
             return walletList;
         }
-
     }
+
+    // cree ou modifie, le nom porte a confusion
     public boolean createWallet(Wallet wallet){
         Wallet temp = walletRepository.findWalletByCustomer_IdAndIdcrypto_Id(wallet.getCustomer().getId(), wallet.getIdcrypto().getId());
         if(temp != null){
-
-
+            // just pour arrondir
             double tempo = Math.round(wallet.getQty()*10000.0)/10000.0;
             temp.setQty(tempo);
             walletRepository.save(temp);
         }else{
-
         walletRepository.save(wallet);
         }
         return true;

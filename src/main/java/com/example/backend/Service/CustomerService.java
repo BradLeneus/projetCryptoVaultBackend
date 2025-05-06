@@ -8,7 +8,6 @@ import com.example.backend.repositories.CustomerRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.Signature;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -71,9 +70,8 @@ public class CustomerService {
         customerNoPwd.setFname(c.get().getFname());
         return customerNoPwd;
     }
-    public boolean deleteCustomerById(int id){
+    public void deleteCustomerById(int id){
         customerRepository.deleteById(id);
-        return true;
     }
     public boolean isUserExistByCustomerName(String name){
         Customer customer = customerRepository.findCustomersByFname(name);
